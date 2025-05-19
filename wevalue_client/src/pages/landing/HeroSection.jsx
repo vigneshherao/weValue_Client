@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 const HeroSection = () => {
   return (
     <>
-      <Navbar />
       <section className="min-h-screen bg-gradient-to-br from-white via-[#fdf1f4] to-[#f3f3fd] px-4 md:px-16 py-12 relative">
         <div className="text-center mb-4">
           <span className="text-xs md:text-sm text-[#6e6e6e] bg-white px-3 py-1 rounded-full border border-gray-300">
