@@ -4,6 +4,7 @@ import Patners from "./Patners";
 import Counts from "./Counts";
 import TutorDashboard from "./TutorDashboard";
 import Reviews from "./Reviews";
+import Login from "../logins/StudentLogin";
 
 const HomePage = () => {
   return (
