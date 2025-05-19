@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-100 shadow-md rounded-xl mx-auto w-[72%] mt-4 px-4 py-3 flex items-center justify-between">
+    <nav className="bg-gradient-to-br from-white via-[#fdf1f4] to-[#f3f3fd] shadow-md rounded-xl mx-auto w-[72%] mt-4 px-4 py-3 flex items-center justify-between z-50 relative">
       <div className="text-[#0C0950] text-2xl font-bold">WeValue</div>
       <div className="hidden md:flex items-center space-x-6">
         <a
