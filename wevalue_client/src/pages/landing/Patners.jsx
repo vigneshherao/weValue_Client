@@ -9,10 +9,16 @@ const Partners = () => {
     "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
     "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
     "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
+    "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
+    "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
+    "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
+    "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
+    "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
+    "https://cdn.freebiesupply.com/images/large/2x/google-logo-transparent.png",
   ];
 
   return (
-    <section className="py-10 px-4 sm:px-6 md:px-10 lg:px-20">
+    <section className="bg-gradient-to-br from-[#fdf1f4] via-[#fdf1f4] to-[#f3f3fd]  py-10 px-4 sm:px-6 md:px-10 lg:px-20">
       <h2 className="text-2xl md:text-3xl font-bold text-center text-[#0C0950]">
         Our Partners
       </h2>
