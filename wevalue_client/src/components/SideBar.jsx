@@ -12,8 +12,12 @@ import { IoLogOut } from "react-icons/io5";
 import SidebarItem from "./SideBarItem";
 
 const studentMenuItems = [
-  { icon: <FaTachometerAlt />, label: "Dashboard", path: "/student/dashboard" },
-  { icon: <FaChartBar />, label: "Todo", path: "/student/todo" },
+  {
+    icon: <FaTachometerAlt />,
+    label: "Dashboard",
+    path: "/student/1/dashboard",
+  },
+  { icon: <FaChartBar />, label: "Todo", path: "/student/1/todo" },
   { icon: <AiFillMessage />, label: "Discuss/Doubts" },
   { icon: <FaCalendarAlt />, label: "Calendar" },
   { icon: <FaFilePen />, label: "Assessment" },
@@ -35,7 +39,7 @@ const bottomItems = [
 
 export default function Sidebar() {
   return (
-    <div className="w-64 min-h-screen bg-[#f9fafb] text-[#1f2937] p-4 flex flex-col justify-between border-r border-gray-200">
+    <div className="hidden sm:flex w-64 min-h-screen bg-gradient-to-br from-white via-[#fdf1f4] to-[#f3f3fd] shadow-md text-[#1f2937] p-4  flex-col justify-between border-r border-gray-200">
       <div>
         <div className="flex items-center gap-2 mb-6">
           <span className="text-lg font-bold mx-auto text-[#0C0950]">
