@@ -1,6 +1,63 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { validateStudentForm } from "../../utils/formValidation";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function StudentLogin() {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const [validationError, setValidationError] = useState({
+    email: null,
+    password: null,
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isLoading) return;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    const validation = validateStudentForm(email, password);
+
+    setValidationError(validation || { email: null, password: null });
+
+    if (validation) {
+      return;
+    }
+
+    handleLogin(email, password);
+  };
+
+  const handleLogin = async (email, password) => {
+    setIsLoading(true);
+
+    setTimeout(async () => {
+      try {
+        const response = await fetch("http://localhost:7999/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+          credentials: "include",
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          toast.success(data.message || "Login successful");
+        } else {
+          toast.error(data.error || "Login failed");
+        }
+      } catch (err) {
+        toast.error("Network error");
+        console.error("Login error:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }, 1000);
+  };
+
   return (
     <div className="h-screen overflow-hidden flex flex-col md:flex-row bg-gradient-to-br from-white via-[#fdf1f4] to-[#f3f3fd]">
       <div className="w-full md:w-1/2 flex items-center justify-center p-8 bg-white shadow-md">
@@ -12,22 +69,31 @@ export default function StudentLogin() {
             Login with your email and password to access your account.
           </p>
 
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <input
               type="email"
+              ref={emailRef}
               placeholder="Enter your email"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+            {validationError.email && (
+              <p className="text-red-600 text-sm">{validationError.email}</p>
+            )}
             <input
               type="password"
+              ref={passwordRef}
               placeholder="Enter your password"
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
+            {validationError.password && (
+              <p className="text-red-600 text-sm">{validationError.password}</p>
+            )}
             <button
+              disabled={isLoading}
               type="submit"
               className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
             >
-              Login
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
 
@@ -46,6 +112,7 @@ export default function StudentLogin() {
           className="w-full h-full object-cover"
         />
       </div>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }
