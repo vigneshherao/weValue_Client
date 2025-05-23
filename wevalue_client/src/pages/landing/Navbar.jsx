@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaAngleDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  console.log(isDropdownOpen);
+
+  const navigate = useNavigate();
+
+  const handleDropdownToggle = (text) => {
+    text ? navigate("tutor/login") : () => navigate("student/login");
+  };
 
   return (
     <nav className="bg-white shadow-md ring-2 ring-gray-100 rounded-xl mx-auto w-[72%] mt-4 px-4 py-3 flex items-center justify-between z-50 relative">
@@ -21,23 +30,34 @@ const Navbar = () => {
         >
           <Link to={"/contact"}>contact</Link>
         </a>
-        <select className="bg-[#7b3bf4] p text-white border-none text-[#0C0950] font-medium rounded-md px-3 py-1 outline-none hover:border-white focus:ring-1 focus:ring-white transition">
-          <option value="" disabled selected hidden>
-            Sign up / Login
-          </option>
-          <option
-            value="tutee"
-            className="bg-white text-[#0C0950] border-none outline-none"
-          >
-            as Student
-          </option>
-          <option
-            value="tutor"
-            className="bg-white text-[#0C0950] border-none outline-none"
-          >
-            as Tutor
-          </option>
-        </select>
+
+        <div
+          className="bg-[#7b3bf4]  text-white border-none font-medium rounded-md px-3 py-1 outline-none hover:border-white focus:ring-1 focus:ring-white transition"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
+          <label className="flex justify-between items-center cursor-pointer">
+            Login
+            <span className="mt-1 ml-2 ">
+              <FaAngleDown />
+            </span>
+          </label>
+          {isDropdownOpen && (
+            <div className="absolute  w-32 top-12 ring-gray-100 right-[-1px] bg-white rounded-md shadow-md p-4 flex flex-col space-y-4 ">
+              <label
+                className="text-[#0C0950] flex justify-between items-center cursor-pointer p-1 hover:bg-gray-100"
+                onClick={() => navigate("student/login")}
+              >
+                as Tutee
+              </label>
+              <label
+                className="text-[#0C0950]  flex justify-between items-center cursor-pointer  hover:bg-gray-100 "
+                onClick={() => navigate("tutor/login")}
+              >
+                as Tutor
+              </label>
+            </div>
+          )}
+        </div>
       </div>
       <button
         className="md:hidden text-[#0C0950] focus:outline-none"
@@ -65,13 +85,33 @@ const Navbar = () => {
           >
             Contact
           </a>
-          <select className="bg-white border border-gray-300 text-[#0C0950] font-medium rounded-md px-3 py-1 outline-none hover:border-blue-400 focus:ring-1 focus:ring-blue-500 transition">
-            <option value="" disabled selected hidden>
-              Sign up / Login
-            </option>
-            <option value="tutee">as Tutee</option>
-            <option value="tutor">as Tutor</option>
-          </select>
+          <div
+            className="bg-[#7b3bf4]  text-white border-none font-medium rounded-md px-3 py-1 outline-none hover:border-white focus:ring-1 focus:ring-white transition"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            <label className="flex justify-between items-center cursor-pointer">
+              Login
+              <span className="mt-1 ml-2 ">
+                <FaAngleDown />
+              </span>
+            </label>
+            {isDropdownOpen && (
+              <div className="absolute  w-32 top-12 ring-gray-100 right-[-1px] bg-white rounded-md shadow-md p-4 flex flex-col space-y-4 ">
+                <label
+                  className="text-[#0C0950] flex justify-between items-center cursor-pointer p-1 hover:bg-gray-100"
+                  onClick={() => handleDropdownToggle("tutee")}
+                >
+                  as Tutee
+                </label>
+                <label
+                  className="text-[#0C0950]  flex justify-between items-center cursor-pointer  hover:bg-gray-100 "
+                  onClick={() => handleDropdownToggle("tutor")}
+                >
+                  as Tutor
+                </label>
+              </div>
+            )}
+          </div>
         </div>
       )}
     </nav>
