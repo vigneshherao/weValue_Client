@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { validateStudentForm } from "../../utils/formValidation";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { preLoad } from "../../utils/preLoad";
 
 export default function StudentLogin() {
   const emailRef = useRef(null);
@@ -10,6 +12,8 @@ export default function StudentLogin() {
     password: null,
   });
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();

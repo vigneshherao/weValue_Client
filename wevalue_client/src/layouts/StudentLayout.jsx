@@ -9,7 +9,7 @@ export default function StudentLayout() {
       <SideBar />
       <main className="flex-1 p-4">
         <Outlet />
-        <Notication />
+        {/* <Notication /> */}
       </main>
     </div>
   );
