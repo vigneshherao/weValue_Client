@@ -10,6 +10,7 @@ import { MdDarkMode } from "react-icons/md";
 import { BsFillGearFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
 import SidebarItem from "./SideBarItem";
+import { RiShining2Fill } from "react-icons/ri";
 import path from "path";
 
 const studentMenuItems = [
@@ -19,9 +20,14 @@ const studentMenuItems = [
     path: "/student/1/dashboard",
   },
   { icon: <FaChartBar />, label: "Todo", path: "/student/1/todo" },
-  { icon: <AiFillMessage />, label: "Discuss/Doubts" },
+  {
+    icon: <AiFillMessage />,
+    label: "Discuss/Doubts",
+    path: "/student/1/doubt",
+  },
   { icon: <FaCalendarAlt />, label: "Calendar", path: "/student/1/calendar" },
-  { icon: <FaFilePen />, label: "Assessment" },
+  { icon: <FaFilePen />, label: "Assessment", path: "/student/1/test" },
+  { icon: "✨", label: "ValueAI", path: "/student/1/ai" },
 ];
 
 const tutorMenuItems = [
