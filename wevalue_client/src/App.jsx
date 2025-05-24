@@ -11,6 +11,7 @@ import StudentDashBoard from "./pages/student/StudentDashBoard";
 import StudentLayout from "./layouts/StudentLayout";
 import StudentProfile from "./pages/student/StudentProfile";
 import StudentTodo from "./pages/student/StudentTodo";
+import StudentCalendar from "./pages/student/StudentCalendar";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/student/:id" element={<StudentLayout />}>
           <Route path="dashboard" element={<StudentDashBoard />} />
           <Route path="todo" element={<StudentTodo />} />
+          <Route path="calendar" element={<StudentCalendar />} />
           <Route path="profile" element={<StudentProfile />} />
         </Route>
         //Login routes
